@@ -24,8 +24,8 @@ The API currently supports the following dApps contracts and function calls:
 
 ## API
 
-- GET `/compound/mint?token={token}&amount={amount}`
-- GET `/compound/redeemUnderlying?token={token}&amount={amount}`
+- GET `/api/compound/mint?token={token}&amount={amount}`
+- GET `/api/compound/redeemUnderlying?token={token}&amount={amount}`
 
 ## Examples
 
@@ -34,7 +34,7 @@ The API currently supports the following dApps contracts and function calls:
 Required Params: `token`, `amount`
 
 ```bash
-GET https://gas-estimate-api.xyz/compound/mint/?token=cDAI&amount=50
+GET https://gas-estimate-api.xyz/api/compound/mint/?token=cDAI&amount=50
 
 # Response
 {
@@ -51,7 +51,7 @@ GET https://gas-estimate-api.xyz/compound/mint/?token=cDAI&amount=50
 Required Params: `token`, `amount`
 
 ```bash
-GET https://gas-estimate-api.vercel.app/api/compound/redeemUnderlying?token=cETH&amount=1.5
+GET https://gas-estimate-api.xyz/api/compound/redeemUnderlying?token=cETH&amount=1.5
 
 # Response
 {
