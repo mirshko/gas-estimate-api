@@ -17,7 +17,7 @@ const CompoundDeposit = () => {
     <p className="flex">
       <div className="inline">Depositing</div>
       <div className="inline">
-        <input type="text" size="4" defaultValue={25} />
+        <input type="text" size={2} defaultValue={25} />
       </div>
       <div className="inline">
         <select name="currency" id="currency">
@@ -47,7 +47,7 @@ const CompoundWithdraw = () => {
     <p className="flex">
       <div className="inline">Withdrawing</div>
       <div className="inline">
-        <input type="text" size="4" defaultValue={50} />
+        <input type="text" size={2} defaultValue={50} />
       </div>
       <div className="inline">
         <select name="currency" id="currency">
