@@ -7,7 +7,8 @@ export default async (req, res) => {
   const { query } = req;
 
   try {
-    if (!query.token) throw new Error(`Parameter 'token' is required`);
+    if (!(query.token && query.amount))
+      throw new Error(`Parameters 'token' & 'amount' are required`);
 
     const Compound = new Contract(
       constants.Compound[query.token].address,
@@ -20,7 +21,7 @@ export default async (req, res) => {
     switch (query.token) {
       case "cETH":
         gasEstimation = await Compound.estimateGas.mint({
-          value: parseEther(query?.amount ?? "1"),
+          value: parseEther(query.amount),
         });
 
         break;
@@ -28,7 +29,7 @@ export default async (req, res) => {
       case "cDAI":
       default:
         gasEstimation = await Compound.estimateGas.mint(
-          parseUnits(query?.amount ?? "1", 18)
+          parseUnits(query.amount, 18)
         );
 
         break;

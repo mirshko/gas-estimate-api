@@ -7,7 +7,7 @@ export default async (req, res) => {
   const { query } = req;
 
   try {
-    if (!query.token)
+    if (!(query.token && query.amount))
       throw new Error(`Parameters 'token' & 'amount' are required`);
 
     const Compound = new Contract(
