@@ -1,8 +1,9 @@
 import { Contract } from "ethers";
 import type { BigNumber } from "ethers";
-import { parseEther, parseUnits } from "ethers/lib/utils";
+import { formatUnits, parseEther, parseUnits } from "ethers/lib/utils";
 import constants from "lib/constants";
 import cors from "lib/cors";
+import getGasPriceBySpeed from "lib/getGasPriceBySpeed";
 import Provider from "lib/provider";
 import type {
   GasEstimateApiRequest,
@@ -49,11 +50,14 @@ export default async function handler(
         break;
     }
 
+    const { price: gasPrice } = await getGasPriceBySpeed(query?.speed);
+
     res.json({
       success: true,
       result: {
         timestamp: Date.now(),
         estimation: gasEstimation.toNumber(),
+        fee: Number(formatUnits(gasEstimation.toNumber() * gasPrice, "gwei")),
       },
     });
   } catch (error) {

@@ -5,6 +5,7 @@ type GasEstimateResponse = {
   result?: {
     timestamp: number;
     estimation: number;
+    fee: number;
   };
   error?: string;
   message?: string;
@@ -17,5 +18,6 @@ export interface GasEstimateApiRequest extends NextApiRequest {
     [key: string]: string | string[];
     token: "cDAI" | "cETH" | "cBAT" | "cUSDC";
     amount: string;
+    speed?: "slow" | "average" | "fast";
   };
 }

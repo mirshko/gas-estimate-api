@@ -11,10 +11,18 @@ A simple API to estimate the gas cost of common dApp Smart Contract function cal
 - token: `cDAI` | `cETH` | `cBAT` | `cUSDC`
 - amount: _string_
 
+**Optional Params**
+
+- speed: `slow` | `average` | `fast`
+
 #### `redeemUnderlying` Params
 
 - token: `cDAI` | `cETH` | `cBAT` | `cUSDC`
 - amount: _string_
+
+**Optional Params**
+
+- speed: `slow` | `average` | `fast`
 
 ## API
 
@@ -27,6 +35,8 @@ A simple API to estimate the gas cost of common dApp Smart Contract function cal
 
 Required Params: `token`, `amount`
 
+Optional Params: `speed`
+
 ```bash
 GET https://gas-estimate-api.xyz/api/compound/mint/?token=cDAI&amount=50
 
@@ -34,8 +44,9 @@ GET https://gas-estimate-api.xyz/api/compound/mint/?token=cDAI&amount=50
 {
   "success": true,
   "result": {
-    "timestamp": 1598185539803,
-    "estimation": 181463
+    "timestamp": 1598193854974,
+    "estimation": 181404,
+    "fee": 0.015963552
   }
 }
 ```
@@ -44,15 +55,18 @@ GET https://gas-estimate-api.xyz/api/compound/mint/?token=cDAI&amount=50
 
 Required Params: `token`, `amount`
 
+Optional Params: `speed`
+
 ```bash
-GET https://gas-estimate-api.xyz/api/compound/redeemUnderlying?token=cETH&amount=1.5
+GET https://gas-estimate-api.xyz/api/compound/redeemUnderlying?token=cETH&amount=1.5&speed=fast
 
 # Response
 {
   "success": true,
   "result": {
-    "timestamp": 1598185820687,
-    "estimation": 151910
+    "timestamp": 1598193938072,
+    "estimation": 151910,
+    "fee": 0.01473527
   }
 }
 ```
