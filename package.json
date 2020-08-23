@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Simple API to estimate the Gwei cost of common Smart Contract calls",
   "main": "api/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "ethers": "^5.0.8",
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
