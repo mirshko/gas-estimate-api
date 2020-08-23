@@ -6,12 +6,12 @@ A simple API to estimate the gas cost of common dApp Smart Contract function cal
 
 ### Compound cToken
 
-##### `mint` Params
+#### `mint` Params
 
 - token: `cDAI` | `cETH` | `cBAT` | `cUSDC`
 - amount: _string_
 
-##### `redeemUnderlying` Params
+#### `redeemUnderlying` Params
 
 - token: `cDAI` | `cETH` | `cBAT` | `cUSDC`
 - amount: _string_
