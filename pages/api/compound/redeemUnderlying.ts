@@ -30,6 +30,8 @@ export default async (
     switch (query.token) {
       case "cDAI":
       case "cETH":
+      case "cBAT":
+      case "cUSDC":
       default:
         gasEstimation = await Compound.estimateGas.redeemUnderlying(
           parseUnits(query.amount, 18)

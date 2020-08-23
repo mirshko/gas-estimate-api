@@ -1,6 +1,6 @@
 {
   "name": "gas-estimate-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple API to estimate the gas cost of common dApp Smart Contract function calls",
   "author": "@mirshko <jeff@reiner.design>",
   "license": "MIT",

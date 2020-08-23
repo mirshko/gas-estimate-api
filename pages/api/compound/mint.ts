@@ -36,6 +36,8 @@ export default async (
         break;
 
       case "cDAI":
+      case "cBAT":
+      case "cUSDC":
       default:
         gasEstimation = await Compound.estimateGas.mint(
           parseUnits(query.amount, 18)

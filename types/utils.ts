@@ -15,7 +15,7 @@ export type GasEstimateApiResponse = NextApiResponse<GasEstimateResponse>;
 export interface GasEstimateApiRequest extends NextApiRequest {
   query: {
     [key: string]: string | string[];
-    token: "cDAI" | "cETH";
+    token: "cDAI" | "cETH" | "cBAT" | "cUSDC";
     amount: string;
   };
 }
