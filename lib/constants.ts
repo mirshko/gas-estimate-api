@@ -1,7 +1,7 @@
 import cDAI from "abi/cDAI.json";
 import cETH from "abi/cETH.json";
 
-export default constants = {
+const constants = {
   Compound: {
     cDAI: {
       address: "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
@@ -13,3 +13,5 @@ export default constants = {
     },
   },
 };
+
+export default constants;

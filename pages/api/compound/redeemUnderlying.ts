@@ -1,9 +1,21 @@
-import constants from "lib/constants";
 import { Contract } from "ethers";
-import { parseEther, parseUnits } from "ethers/lib/utils";
+import type { BigNumber } from "ethers";
+import { parseUnits } from "ethers/lib/utils";
+import constants from "lib/constants";
 import Provider from "lib/provider";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req, res) => {
+type Data = {
+  success: boolean;
+  result?: {
+    timestamp: number;
+    estimation: number;
+  };
+  error?: string;
+  message?: string;
+};
+
+export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { query } = req;
 
   try {
@@ -16,19 +28,13 @@ export default async (req, res) => {
       Provider
     );
 
-    let gasEstimation;
+    let gasEstimation: BigNumber;
 
     switch (query.token) {
-      case "cETH":
-        gasEstimation = await Compound.estimateGas.mint({
-          value: parseEther(query.amount),
-        });
-
-        break;
-
       case "cDAI":
+      case "cETH":
       default:
-        gasEstimation = await Compound.estimateGas.mint(
+        gasEstimation = await Compound.estimateGas.redeemUnderlying(
           parseUnits(query.amount, 18)
         );
 
@@ -45,6 +51,8 @@ export default async (req, res) => {
   } catch (error) {
     console.error(error);
 
-    res.status(400).send("Error");
+    res.status(400).json({
+      success: false,
+    });
   }
 };
