@@ -1,18 +1,7 @@
+import constants from "lib/constants";
 import { Contract } from "ethers";
-import { parseUnits, parseEther } from "ethers/lib/utils";
-import cDAI from "../../../abi/cDAI.json";
-import cETH from "../../../abi/cETH.json";
-import Provider from "../../../lib/provider";
-
-const ABI = {
-  cDAI,
-  cETH,
-};
-
-const ADDRESSES = {
-  cDAI: "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
-  cETH: "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
-};
+import { parseEther, parseUnits } from "ethers/lib/utils";
+import Provider from "lib/provider";
 
 export default async (req, res) => {
   const { query } = req;
@@ -21,8 +10,8 @@ export default async (req, res) => {
     if (!query.token) throw new Error(`Parameter 'token' is required`);
 
     const Compound = new Contract(
-      ADDRESSES[query.token],
-      ABI[query.token],
+      constants.Compound[query.token].address,
+      constants.Compound[query.token].abi,
       Provider
     );
 
