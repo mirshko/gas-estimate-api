@@ -3,24 +3,21 @@ import type { BigNumber } from "ethers";
 import { parseEther, parseUnits } from "ethers/lib/utils";
 import constants from "lib/constants";
 import Provider from "lib/provider";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type {
+  GasEstimateApiRequest,
+  GasEstimateApiResponse,
+} from "types/utils";
 
-type Data = {
-  success: boolean;
-  result?: {
-    timestamp: number;
-    estimation: number;
-  };
-  error?: string;
-  message?: string;
-};
-
-export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export default async (
+  req: GasEstimateApiRequest,
+  res: GasEstimateApiResponse
+) => {
   const { query } = req;
 
   try {
-    if (!(query.token && query.amount))
-      throw new Error(`Parameters 'token' & 'amount' are required`);
+    if (!query.token) throw new Error(`Missing or invalid 'token' parameter`);
+
+    if (!query.amount) throw new Error(`Missing or invalid 'amount' parameter`);
 
     const Compound = new Contract(
       constants.Compound[query.token].address,
@@ -57,8 +54,18 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   } catch (error) {
     console.error(error);
 
-    res.status(400).json({
-      success: false,
-    });
+    if (error.code && error.reason) {
+      res.status(400).json({
+        success: false,
+        error: error.code,
+        message: error.reason,
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        error: "Internal Server Error",
+        message: error.message ?? "Something Went Wrong",
+      });
+    }
   }
 };
