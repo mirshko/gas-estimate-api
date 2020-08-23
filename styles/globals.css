@@ -14,3 +14,28 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+input {
+  width: 100%;
+  display: flex;
+  min-width: max-content;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+p {
+  display: inline-flex;
+}
