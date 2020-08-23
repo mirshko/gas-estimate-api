@@ -1,0 +1,14 @@
+{
+  "name": "gas-estimate-api",
+  "version": "1.0.0",
+  "description": "Simple API to estimate the Gwei cost of common Smart Contract calls",
+  "main": "api/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "@mirshko <jeff@reiner.design>",
+  "license": "MIT"
+}
