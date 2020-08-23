@@ -7,7 +7,7 @@ type EthPricesResponse = {
   message?: string;
 };
 
-export default async function fetchEthPrices(
+export default async function getEthPricesByCurrency(
   currency: "USD" | "EUR" | "GBP" = "USD"
 ) {
   try {

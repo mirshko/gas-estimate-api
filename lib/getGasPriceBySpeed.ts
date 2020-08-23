@@ -17,7 +17,7 @@ interface GasPrices {
   fast: GasPrice;
 }
 
-export default async function fetchGasPrices(
+export default async function getGasPriceBySpeed(
   speed: "slow" | "average" | "fast" = "average"
 ) {
   try {
