@@ -2,25 +2,19 @@
 
 A simple API to estimate the gas cost of common dApp Smart Contract function calls
 
-## Status
-
-The API currently supports the following dApps contracts and function calls:
+## Smart Contract Support
 
 ### Compound cToken
 
-- `mint`
+##### `mint` Params
 
-  **Params**
+- token: `cDAI` | `cETH`
+- amount: _string_
 
-  - token: `cDAI` | `cETH`
-  - amount: _string_
+##### `redeemUnderlying` Params
 
-- `redeemUnderlying`
-
-  **Params**
-
-  - token: `cDAI` | `cETH`
-  - amount: _string_
+- token: `cDAI` | `cETH`
+- amount: _string_
 
 ## API
 
