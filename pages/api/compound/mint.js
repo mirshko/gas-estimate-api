@@ -1,8 +1,8 @@
 import { Contract } from "ethers";
 import { parseUnits, parseEther } from "ethers/lib/utils";
-import cDAI from "../../abi/cDAI.json";
-import cETH from "../../abi/cETH.json";
-import Provider from "../../lib/provider";
+import cDAI from "../../../abi/cDAI.json";
+import cETH from "../../../abi/cETH.json";
+import Provider from "../../../lib/provider";
 
 const ABI = {
   cDAI,

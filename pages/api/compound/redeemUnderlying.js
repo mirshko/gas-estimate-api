@@ -30,14 +30,16 @@ export default async (req, res) => {
 
     switch (query.token) {
       case "cETH":
-        gasEstimation = await Compound.estimateGas.redeemUnderlying();
+        gasEstimation = await Compound.estimateGas.redeemUnderlying(
+          parseUnits(query?.amount ?? "1", 18)
+        );
 
         break;
 
       case "cDAI":
       default:
         gasEstimation = await Compound.estimateGas.redeemUnderlying(
-          parseUnits(query?.amount ?? "1", 18).toString()
+          parseUnits(query?.amount ?? "1", 18)
         );
 
         break;
