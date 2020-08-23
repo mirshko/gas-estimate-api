@@ -2,16 +2,19 @@ import { Contract } from "ethers";
 import type { BigNumber } from "ethers";
 import { parseEther, parseUnits } from "ethers/lib/utils";
 import constants from "lib/constants";
+import cors from "lib/cors";
 import Provider from "lib/provider";
 import type {
   GasEstimateApiRequest,
   GasEstimateApiResponse,
 } from "types/utils";
 
-export default async (
+export default async function handler(
   req: GasEstimateApiRequest,
   res: GasEstimateApiResponse
-) => {
+) {
+  await cors(req, res);
+
   const { query } = req;
 
   try {
@@ -70,4 +73,4 @@ export default async (
       });
     }
   }
-};
+}
